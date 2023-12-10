@@ -7,8 +7,8 @@ const app = Vue.createApp({
             selectedVariant: 0,
             details: [ '50% algodon', '30% lana', '20% polyester' ],
             variants: [
-                { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 20 },
-                { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 },
+                { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 20, onSale: false },
+                { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: true },
             ],
             sizes: [ 5, 6, 7, 8 ,9],
         }
@@ -31,6 +31,9 @@ const app = Vue.createApp({
         },
         inStock() {
             return this.variants[this.selectedVariant].quantity
+        },
+        sale() {
+            return this.brand + ' ' + this.variants[this.selectedVariant].onSale + ' is on sale'
         }
     }
 })
