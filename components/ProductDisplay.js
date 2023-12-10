@@ -7,12 +7,15 @@ app.component('product-display', {
     },
     template: 
     /*html*/
-    `<div class="product-display">
+    `
+    <div class="product-display">
+
     <div class="product-container">
       <div class="product-image">
         <!-- image goes here -->
         <img v-bind:src="image">
       </div>
+
       <div class="product-info">
         <h1>{{ title }}</h1>
          <!-- solution -->
@@ -31,7 +34,9 @@ app.component('product-display', {
           v-for="(variant, index) in variants" 
           :key="variant.id" 
           @mouseover="updateVariant(index)" 
-          :style="{ backgroundColor: variant.color }"></div>
+          :style="{ backgroundColor: variant.color }">
+        </div>
+
         <button 
         class="button" 
         :class="{ disabledButton: !inStock }" 
@@ -44,6 +49,8 @@ app.component('product-display', {
       <button class="button" @click="deleteToCart">Delete from Cart</button>
       </div>
     </div>
+    <review-list :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
   </div>`,
   data() {
     return {
@@ -55,7 +62,9 @@ app.component('product-display', {
             { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 20, onSale: false },
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: true },
         ],
-        sizes: [ 5, 6, 7, 8 ,9],
+        reviews: [],
+        tabs: ['review-form', 'review-list'],
+      activeTab: 'review-form'
     }
 },
 methods: {
@@ -65,6 +74,9 @@ methods: {
     updateVariant(index) {
         this.selectedVariant = index
     },
+    addReview(review) {
+        this.reviews.push(review)
+    }
 },
 computed: {
     title() {
