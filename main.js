@@ -2,13 +2,10 @@ const app = Vue.createApp({
     data() {
         return {
             cart: 0,
-            product: 'Socks, ahora si se ve todo lo q yop quier q se vea no joda !!!! att Pilar',
-            description: 'arcoires y unicornios bling bling',
+            product: 'Socks',
+            brand: 'Vue Mastery',
             image: './assets/images/socks_green.jpg',
-            url: 'https://img.freepik.com/free-vector/cute-unicorn-drinking-boba-milk-tea-with-rainbow-cartoon-vector-icon-illustration-animal-drink-icon_138676-7412.jpg?size=626&ext=jpg',
-            inventory: 2,
-            onSale: false,
-            inStock: true,
+            inStock: false,
             details: [ '50% algodon', '30% lana', '20% polyester' ],
             variants: [
                 { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
@@ -24,10 +21,5 @@ const app = Vue.createApp({
         updateImage(variantImage) {
             this.image = variantImage
         },
-        deleteToCart() {
-            if (this.cart >=1) {
-                this.cart -= 1
-            }
-        }
     }
 })
