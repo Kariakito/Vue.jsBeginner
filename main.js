@@ -8,6 +8,11 @@ const app = Vue.createApp({
         inventory: 2,
         onSale: false,
         inStock: true,
+        details: [ '50% algodon', '30% lana', '20% polyester' ],
+        variants: [
+            { id: 2234, color: 'green' },
+            { id: 2235, color: 'blue' },
+        ]
         }
     }
 })
